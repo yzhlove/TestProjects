@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "msg"></div>
+
+<!--测试界面-->
+
+<script>
+
+   var json = {
+       model:"game",
+       action:"playing",
+       game_code:"lianliankan",
+       data:{
+           room_id:1,
+           sid:1,
+           game_info:{level:2,score:100}
+       }
+   }
+
+   var str = JSON.stringify(json);
+   alert(str);
+
+    document.getElementById('msg').innerHTML = str;
+
+</script>
+
+</body>
+</html>
