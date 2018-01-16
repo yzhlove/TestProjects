@@ -10,6 +10,10 @@
 class GameHandler extends BaseHandler {
 
 
+    public function __construct() {
+        echo "GameHandler is create ... \n";
+    }
+
     public function HandlerRequest(BaseRequest $request)
     {
         if ($request->action == "game") {
