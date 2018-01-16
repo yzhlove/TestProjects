@@ -16,20 +16,22 @@ require_once "UserHandler.php";
 class server {
 
     private $server;
+    private $index_change;
 
     public function __construct() {
         $this->server = new swoole_server("0.0.0.0",9501);
 
         $this->server->set([
-            "worker_num" => 2,
+            "worker_num" => 4,
             "daemonize" => false,
             "max_conn" => 3000,
             "max_request" => 10000,
-            "task_worker_num" => 2,
+            "task_worker_num" => 4,
             "debug_mode" => 1,
             "dispatch_mode" => 2
         ]);
 
+        $this->server->on("WorkerStart",[$this,"onWorkerStart"]);
         $this->server->on("connect",[$this,"onConnect"]);
         $this->server->on("receive",[$this,"onReceive"]);
         $this->server->on("close",[$this,"onClose"]);
@@ -37,6 +39,18 @@ class server {
         $this->server->on("finish",[$this,"onFinish"]);
 
         $this->server->start();
+    }
+
+    public function onWorkerStart($server,$worker_id) {
+        echo "worker_id = $worker_id \n";
+
+        if ($worker_id < $this->server->setting['worker_num'])
+        echo "object create \n";
+        $game = new GameHandler();
+        $user = new UserHandler();
+        $game->setNextHandler($user);
+
+        $this->index_change = $game;
     }
 
     public function onConnect($server,$fd) {
@@ -47,10 +61,7 @@ class server {
         echo "onReceive is running ... \n";
         echo "data = " . $data . "\n";
 
-        $game = new GameHandler();
-        $user = new UserHandler();
-        $game->setNextHandler($user);
-        $game->HandlerRequest(new BaseRequest($this->server,$fd,$data));
+        $this->index_change->HandlerRequest(new BaseRequest($this->server,$fd,$data));
 
     }
 
