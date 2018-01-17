@@ -8,13 +8,18 @@
 
 class UserHandler extends BaseHandler {
 
+    public function __construct() {
+        echo "USerHandler is create ... \n";
+    }
+
     public function HandlerRequest(BaseRequest $request) {
 
         if ($request->action == "user") {
+            echo "\n----------------------\n";
             $request->server->task(["fd"=>$request->fd,"data"=>$request->data]);
         } elseif ($this->nexHandler)
             $this->nexHandler->HandlerRequest($request);
         else
-            echo "user: action is error!";
+            echo "user: action is error!\n";
     }
 }
