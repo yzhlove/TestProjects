@@ -44,13 +44,13 @@ class server {
     public function onWorkerStart($server,$worker_id) {
         echo "worker_id = $worker_id \n";
 
-        if ($worker_id < $this->server->setting['worker_num'])
-        echo "object create \n";
-        $game = new GameHandler();
-        $user = new UserHandler();
-        $game->setNextHandler($user);
-
-        $this->index_change = $game;
+        if ($worker_id < $this->server->setting['worker_num']) {
+            echo "object create \n";
+            $game = new GameHandler();
+            $user = new UserHandler();
+            $game->setNextHandler($user);
+            $this->index_change = $game;
+        }
     }
 
     public function onConnect($server,$fd) {
