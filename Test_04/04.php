@@ -14,10 +14,10 @@ class Timer {
 
     public function __construct() {
 
-        $this->timer_id = swoole_timer_after(3000,[$this,"change"]);
+        $this->timer_id = swoole_timer_after(3000,[$this,"change"],[15]);
     }
-    public function change() {
-        echo "hello world";
+    public function change($id) {
+        echo "hello { $id[0] } world";
     }
 
     public function getTimerId() {
