@@ -9,8 +9,8 @@
 /* swoole测试 */
 
 require_once "BaseHandler.php";
-require_once "BaseRequest.php";
 require_once "GameHandler.php";
+require_once "BaseRequest.php";
 require_once "UserHandler.php";
 
 class server {
@@ -80,6 +80,5 @@ class server {
     }
 
 }
-
 
 $sev = new server();
