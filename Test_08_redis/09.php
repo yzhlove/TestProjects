@@ -70,13 +70,56 @@ $pop_data = $redis->lPop("listlove");
 echo "lpop = $pop_data \n";
 
 //rpop 从列表右侧弹出元素
+$data  = $redis->rPop("listlove");
+echo "rpop = $data \n";
 
+echo "<-------------------------->\n";
 
+// 删除指定的元素
+// 格式： lrem key count value
+// count > 0 从左到右，删除最多个count元素
+// count < 0 从右到左，删除最多个count元素
+// count = 0 删除所有
+// 返回元素删除的数量
+
+$redis->rPush("tempkey",1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,6,6,6,5,5,5,7,8,9);
+$temp_arr = $redis->lRange("tempkey",0,-1);
+
+foreach ($temp_arr as $value)
+    echo "$value ";
+echo "\n<-------------------------->\n";
+
+// 从左到右删除6,最多删除4个
+$status = $redis->lRem("tempkey",6,4);
+echo "rem status = $status \n";
+$temp_arr = $redis->lRange("tempkey",0,-1);
+foreach ($temp_arr as $value)
+    echo "$value ";
+echo "\n<-------------------------->\n";
+
+// 从右向左删除5，最多删除3个
+$status = $redis->lRem("tempkey",5,3);
+echo "rem status = $status \n";
+$temp_arr = $redis->lRange("tempkey",0,-1);
+foreach ($temp_arr as $value)
+    echo "$value ";
+echo "\n<-------------------------->\n";
+
+// 按照索引范围修剪列表
+// 只保留下标[1,15]之间的元素(下标从0开始而且是闭区间)
+$status = $redis->lTrim("tempkey",1,15);
+echo "trim status = $status \n";
+$temp_arr = $redis->lRange("tempkey",0,-1);
+foreach ($temp_arr as $value)
+    echo "$value ";
+echo "\n<-------------------------->\n";
+
+// lset修改指定索引下标的元素
 
 
 //设置key的过期时间
 $redis->expire("list_love",1);
 $redis->expire("love_list",1);
-
+$redis->expire("tempkey",1);
 
 
