@@ -7,6 +7,6 @@
  */
 
 /* swoole_websocket_client 方法 */
-$class = new ReflectionClass("");
+$class = new ReflectionClass("swoole_websocket_server");
 var_dump($class->getMethods());
 
