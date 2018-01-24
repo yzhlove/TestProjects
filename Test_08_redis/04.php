@@ -49,7 +49,34 @@ try {
 
     var_dump($result);
 
+    //string 追加值
+    $status = $redis->append("a"," movie");
+    $result = $redis->get("a");
+    echo "append: result = $result \n";
+
+    //计算字符串的长度
+    $length = $redis->strlen("a");
+    echo "length = $length \n";
+
+    //string getset 操作
+    $result_str = $redis->getSet("a","I Love Love xjj");
+    echo "result_string = $result_str \n";
+    $string = $redis->get("a");
+    echo "get_string = $string \n";
+
     echo "<----------------------------->\n";
+
+    //设置字符串指定位置的值
+    $set_string = $redis->setRange("b",5,"e love");
+    $result = $redis->get("b");
+    echo "set_string = $result \n";
+
+    //获取部分字符串
+    $str = $redis->getRange("a",0,5);
+    echo "str = $str\n";
+
+    echo "<----------------------------->\n";
+
     //list操作
     //判断listlove 这个key是否存在
     if (!$redis->exists("listlove")) {
