@@ -73,6 +73,11 @@ $redis->select(0);
 // migrate 实例迁移，原子性
 // host -> 地址
 // port -> 端口
+// key  -> 需要迁移的key
+// db   -> 几号数据库，默认[0-15]一共16个数据库
+// timeout  -> 时长
+// copy -> true,迁移后不删除源key
+// replace -> true,不管目标是否存在key都将其覆盖数据
 
 $status = $redis->migrate("127.0.0.1",6380,"why",0,1000,true,true);
 
