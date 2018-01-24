@@ -115,6 +115,12 @@ foreach ($temp_arr as $value)
 echo "\n<-------------------------->\n";
 
 // lset修改指定索引下标的元素
+$status = $redis->lSet("tempkey",9,55);
+echo "set_status = $status \n";
+$temp_arr = $redis->lRange("tempkey",0,-1);
+foreach ($temp_arr as $value)
+    echo "$value ";
+echo "\n<-------------------------->\n";
 
 
 //设置key的过期时间
