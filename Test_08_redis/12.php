@@ -78,8 +78,20 @@ $redis->select(0);
 // timeout  -> 时长
 // copy -> true,迁移后不删除源key
 // replace -> true,不管目标是否存在key都将其覆盖数据
-
+// 迁移成功返回true
 $status = $redis->migrate("127.0.0.1",6380,"why",0,1000,true,true);
+
+//redis keys正则匹配
+/*
+ * "*"  匹配任意字符
+ * "."  匹配一个字符
+ * "[]" 匹配部分字符
+ * "\"  转义
+ * */
+ //例如：匹配以j或者r开头的紧接着edis字符串的所有key
+$result = $redis->keys("[j,r]redis");
+
+
 
 
 
