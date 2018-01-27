@@ -10,8 +10,8 @@ $redis->connect("127.0.0.1",6379);
 
 /* ------------------- */
 
-function channel_change($instance,$channel,$message) {
-    var_dump($instance);
+function channel_change($redis,$pattern,$channel,$message) {
+    echo "pattern = $pattern \n";
     echo "channel = $channel \n";
     echo "message = $message \n";
 }
