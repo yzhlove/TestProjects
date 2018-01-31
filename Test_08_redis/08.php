@@ -76,7 +76,7 @@ $status = $redis->exists("hashTable");
 if ($status) {
     echo "hashTable is exists already!\n";
 }
-
+echo "<------------[hvalue]--------------->\n";
 // 获取所有的 value
 $result_value = $redis->hVals("hashTable");
 var_dump($result_value);
