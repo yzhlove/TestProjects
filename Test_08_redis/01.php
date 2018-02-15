@@ -11,6 +11,9 @@
 //连接redis
 $redis = new Redis();
 $result = $redis->connect("127.0.0.1",6379);
+$redis->open();
+$redis->popen();
+
 
 if (!$result) {
     echo "redis disconnect!\n";
