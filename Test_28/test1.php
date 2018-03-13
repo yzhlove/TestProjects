@@ -11,13 +11,11 @@ $redis->connect("127.0.0.1",6379);
 
 /*
 测试数据格式：
-
 [
     "arts" => ['score' => 150,'num' => 2,name => '文科'],
     "science" => ['score' => 200,'num' => 4,name => '理科']，
     ...
 ]
-
 */
 
 $key = "result_data_storge";
