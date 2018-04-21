@@ -1,0 +1,158 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: apple
+ * Date: 2018/4/18
+ * Time: 下午7:38
+ */
+
+# 区位码测试
+
+function getInitials($str)
+{
+    if (empty($str)) {
+        return '';
+    }
+    $fchar = ord($str{0});
+    if ($fchar >= ord('A') && $fchar <= ord('z')) {
+        return strtoupper($str{0});
+    }
+
+    $s1 = iconv('UTF-8', 'gb2312', $str);
+    $s2 = iconv('gb2312', 'UTF-8', $s1);
+    $s = $s2 == $str ? $s1 : $str;
+    $asc = ord($s{0}) * 256 + ord($s{1}) - 65536;
+    if ($asc >= -20319 && $asc <= -20284) {
+        return 'A';
+    }
+
+    if ($asc >= -20283 && $asc <= -19776) {
+        return 'B';
+    }
+
+    if ($asc >= -19775 && $asc <= -19219) {
+        return 'C';
+    }
+
+    if ($asc >= -19218 && $asc <= -18711) {
+        return 'D';
+    }
+
+    if ($asc >= -18710 && $asc <= -18527) {
+        return 'E';
+    }
+
+    if ($asc >= -18526 && $asc <= -18240) {
+        return 'F';
+    }
+
+    if ($asc >= -18239 && $asc <= -17923) {
+        return 'G';
+    }
+
+    if ($asc >= -17922 && $asc <= -17418) {
+        return 'H';
+    }
+
+    if ($asc >= -17417 && $asc <= -16475) {
+        return 'J';
+    }
+
+    if ($asc >= -16474 && $asc <= -16213) {
+        return 'K';
+    }
+
+    if ($asc >= -16212 && $asc <= -15641) {
+        return 'L';
+    }
+
+    if ($asc >= -15640 && $asc <= -15166) {
+        return 'M';
+    }
+
+    if ($asc >= -15165 && $asc <= -14923) {
+        return 'N';
+    }
+
+    if ($asc >= -14922 && $asc <= -14915) {
+        return 'O';
+    }
+
+    if ($asc >= -14914 && $asc <= -14631) {
+        return 'P';
+    }
+
+    if ($asc >= -14630 && $asc <= -14150) {
+        return 'Q';
+    }
+
+    if ($asc >= -14149 && $asc <= -14091) {
+        return 'R';
+    }
+
+    if ($asc >= -14090 && $asc <= -13319) {
+        return 'S';
+    }
+
+    if ($asc >= -13318 && $asc <= -12839) {
+        return 'T';
+    }
+
+    if ($asc >= -12838 && $asc <= -12557) {
+        return 'W';
+    }
+
+    if ($asc >= -12556 && $asc <= -11848) {
+        return 'X';
+    }
+
+    if ($asc >= -11847 && $asc <= -11056) {
+        return 'Y';
+    }
+
+    if ($asc >= -11055 && $asc <= -10247) {
+        return 'Z';
+    }
+
+    return null;
+}
+
+foreach (['余','子','涵'] as $ch)
+    echo getInitials($ch);
+
+echo "---------\n";
+
+foreach (['A','B','C'] as $ch)
+    echo getInitials($ch);
+
+echo "---------\n";
+
+echo strtoupper("余子涵");
+
+echo "---------\n";
+
+echo getInitials(strtoupper("贝因美"));
+
+echo "---------\n";
+
+$str = "我爱我的家";
+
+echo "---------\n";
+
+echo intval("12345") . "\n";
+echo intval("12ABCD") . "\n";
+echo intval("11我爱") . "\n";
+echo intval("12_@") . "\n";
+echo intval("我爱我家") . "\n";
+echo intval("ABCDEF") . "\n";
+
+
+echo "-----------------------\n";
+$list = ["A" => "123","B" => "456","C" => "789"];
+print_r($list);
+//$list["A"] = "789";
+unset($list['A']);
+print_r($list);
+$list['A'] = "12345";
+print_r($list);
+
