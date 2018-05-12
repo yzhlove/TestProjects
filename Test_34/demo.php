@@ -1,0 +1,20 @@
+<?php
+
+include_once "wxBizDataCrypt.php";
+
+
+$appid = 'wx2a737fd37f9535ac';
+$sessionKey = 'c7949f579b297aafce87650da5bfc4cd';
+
+$encryptedData = "hQsYmmD6URGlVZL2M8kRdJg5oLjXPK3KaE/ancM9uJ7iXfpBpiG558q9FU9WU6vVu7Lie9lMuVefaAxTEkmuXbIc/vwCW1Ff+CDq1GX38NHQcJo8J2MHYa9U5Bnr/3zqWIaMQNtY4TboRVJPQhLv8SoqcS/uNiQqy1kU4q5HrQ3lRYUPqazKOSca+IDoZx1FciAs2wHxY4v1bJvrtxbfrLEV5fR7Cl2SO0cSdVoLf3xaduMJPXqVAiX0xhHpykVvGIZOmu2zt0mHUl0m77FUuekrVqmpO+JhCSpWxyUMniOHey8IgtjTdn7SvARk50IAdfoLi5KIeQbBC2wrrS7GueocSDT6nQ9LfQAUZOUHDkdvsI8z5bfVtN2Gm6p0CzeaEy+2wOW8MDzZ8jWPeMbESOdRVOoiDZIxuMojVf7pehOZ4PIUddkFBW3NQIn2uQxM9eZH2HuP0bRKw6+TyDxIsmsX/gAlinnCNgTt3pXLE47iSFat7ro6FPSkyUUPP8Wu+7oO8TWqTTJDVBZKxXTv9QZFamz0W5gpzSIYrimhwcyT2cIXnii70nLWkshpRLXXKUi3FlBQsDhsFGQv17F5glJWKLRdGSIsnXEtFl541LnlKvBywwN5FymxbeWQEmVo/9RvEv7mUzjW0zwQ9oTCc07xoJLcA+ukoM9tmCKPlbxqlZwhW0ebgyO+Z0M9Z3z8NU+5XgQPRkTo5zuIkK7ZRII+0gCU5aLTlRwao1ZTpBrGFC94mEPpojl3DA4oKq8GvSEd36k9R9n8gjT3llh4/zNzhxgsLvjEinn/EYx/qfla65C2PPWWJdnTle+UcTVJdcVxh1ttwgC2qGG3FB1ohkiC/UEStMiGUr03O0OLGAHF4nmbAQ7L/f4h56FwQ8yccXGGfIttAKUu9zau3wzYETazprVglKkPWZWD8yDjAzk4R+v1JYwZckEV7c02VHBdpHzhC8BNvO8VS0xalFDMpxdYsEqxTT1Rv/M/vBSy0QdR6Q6o4Smq/HF6kdnn+mPQI9N8G3RQsIksYfRB2ZZhuJemI2TubPgGKJbM1oTEncsAzs+yNhug9H2EqXVbEGFEw7xvQ8MqqKRdILEkYhWKEXmmpsbnv31+Uj4YxWnrNycYeX3OVljYPf5xYWqa/4NrnJ2ykR4gRlU57fRF88HOI64cqsP4g3O5ZUru2z/s4OB5EGwHnXFEjOxjsM+E9fV535Gmk7iZLyv+PU1bxcrjZX78fOCkCxu+aFnupFfKvzXL9VEMuygvYm2gg0e3Wh+vgHQVOAAXoQ5iiHi8CZV9xZF9lsV3bZZdU7y02+JS7g7V+Si1KmGatHFghM5375ub3i68/maLGaFLsN7iypSvjI3YX635oGlGoQKjYJipi7iH5yu+bXb6v2+rWyKhR87h1xlTojP0caXQC2hXoaP/MB8AudwFzho0+wXeuyPrxSMgnWN2nBlCSeVJV/p0wV5EahCf4o8pSyq4s82M+uMd1sme49NNOaszzHxYm1IE8XA3yp+3nhDr3pYf7BF1SgRYrCnv4U089vpvpnDW2n1c3spnYGueVEGiyq6HO1oC6lCvrdwYk9SVdn8+b6YE+TSZ1wm1x7yDguFnSooRr7pXvBjzu4wrs2L+32RWrg/qltVhRVgTWTIvXxZ+Q7anhc5w";
+
+$iv = 'r7BXXKkLb8qrSNn05n0qiA==';
+
+$pc = new WXBizDataCrypt($appid, $sessionKey);
+$errCode = $pc->decryptData($encryptedData, $iv, $data);
+
+if ($errCode == 0) {
+    print($data . "\n");
+} else {
+    print($errCode . "\n");
+}
