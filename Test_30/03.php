@@ -1,6 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
+<<<<<<< HEAD
  * User: apple
  * Date: 2018/4/13
  * Time: 下午1:33
@@ -36,6 +37,3 @@ $arr = [
 ];
 echo "\n";
 echo json_encode(['data' => $arr]);
-
-
-
