@@ -21,8 +21,10 @@ echo "========\n";
 
 foreach ($point_map as $type) {
     if ($$type)
-        echo $type . " = " . $$type . "\n";
+    $opts[$type] = $$type;
 }
+
+var_dump($opts);
 
 echo "\n";
 
