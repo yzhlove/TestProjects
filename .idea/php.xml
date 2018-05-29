@@ -2,9 +2,8 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
+      <path value="/usr/local/bin/php" />
       <path value="/usr/local/lib/php" />
-      <path value="$USER_HOME$/src/swoole-ide-helper" />
-      <path value="$PROJECT_DIR$/ChineseUtil-master/vendor/composer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
