@@ -4,6 +4,7 @@
     <include_path>
       <path value="/usr/local/bin/php" />
       <path value="/usr/local/lib/php" />
+      <path value="$USER_HOME$/Application/swoole_help/swoole-ide-helper" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
