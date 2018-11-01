@@ -13,13 +13,19 @@ class TestTimer {
 
     public function go() {
         $this->timer_id = swoole_timer_tick(1 * 1000,function () {
-            if (self::$timer == 0) {
+            static $time_out = 10;
+            if ($time_out == 0) {
                 echo "timeout :\n";
                 swoole_timer_clear($this->timer_id);
                 return ;
             }
-            -- self::$timer;
-            echo "timer = " . self::$timer . "\n";
+            if ($time_out == 7) {
+                echo "timeout = 7 ";
+                -- $time_out;
+                return ;
+            }
+            -- $time_out;
+            echo "timer = " . $time_out . "\n";
         });
 
     }
