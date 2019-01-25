@@ -14,6 +14,12 @@ function count_to_ten() {
     yield from seven_eight();
     yield 9;
     yield 10;
+    for ($i = 11;$i <= 12;$i++) {
+        yield $i;
+    }
+    for ($i = 13;$i <= 15;$i++) {
+        yield  yield $i;
+    }
 }
 
 function seven_eight() {
