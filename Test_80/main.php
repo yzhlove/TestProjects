@@ -34,14 +34,7 @@ function show(array $a)
             $last = $map[$length - 1];
             array_push($current[$last],[$v[1]]);
 
-        } else {
-
-            $current[$last] = $v[1];
-
         }
-
-
-
     }
     print_r($map);
 }
